@@ -51,12 +51,18 @@ export const AppListItem: React.FC<AppListItemProps> = ({ app }) => {
                     </button>
                 </div>
             </div>
-            {/* The collapsible section containing the long description. Rendered conditionally. */}
-            {isExpanded && (
-                <div className="px-6 pb-4 border-t border-slate-200 dark:border-slate-700">
-                    <p className="text-slate-600 dark:text-slate-300 pt-4">{app.longDescription}</p>
+            {/* The collapsible section. Uses a grid-template-rows transition for smooth height animation. */}
+            <div
+                className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+                    isExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                }`}
+            >
+                <div className="overflow-hidden">
+                    <div className="px-6 pt-4 pb-4 border-t border-slate-200 dark:border-slate-700">
+                        <p className="text-slate-600 dark:text-slate-300">{app.longDescription}</p>
+                    </div>
                 </div>
-            )}
+            </div>
         </div>
     );
 };

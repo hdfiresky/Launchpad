@@ -105,13 +105,14 @@ const App: React.FC = () => {
             </div>
         </div>
 
-        {/* Conditionally render AppGrid or AppList based on the current viewMode state */}
-        {viewMode === 'grid' ? (
-            <AppGrid apps={APPS} onAppClick={handleAppClick} />
-        ) : (
-            <AppList apps={APPS} />
-        )}
-
+        {/* This container animates the view switch. The key forces a re-mount, re-triggering the animation. */}
+        <div key={viewMode} className="animate-fade-in-up">
+            {viewMode === 'grid' ? (
+                <AppGrid apps={APPS} onAppClick={handleAppClick} />
+            ) : (
+                <AppList apps={APPS} />
+            )}
+        </div>
       </main>
       <Footer />
       {/* The DescriptionModal is rendered only when an app is selected, improving performance. */}

@@ -22,7 +22,7 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onAppClick }) => {
             role="button"
             tabIndex={0}
             onKeyPress={(e) => (e.key === 'Enter' || e.key === ' ') && onAppClick(app)}
-            className="group bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-brand-primary/20 cursor-pointer transition-all duration-300 ease-in-out transform hover:-translate-y-1 border border-slate-200 dark:border-slate-700 overflow-hidden"
+            className="group bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-brand-primary/20 cursor-pointer transition-[transform,box-shadow] duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-[1.02] border border-slate-200 dark:border-slate-700 overflow-hidden"
         >
             <div className="flex flex-col items-center justify-center p-6 text-center">
                 <div className="h-16 w-16 mb-4 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-700 group-hover:bg-brand-primary/10 transition-colors">

@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { AppDefinition } from '../types';
 import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 
@@ -22,6 +22,20 @@ interface DescriptionModalProps {
 export const DescriptionModal: React.FC<DescriptionModalProps> = ({ isOpen, onClose, app, onProceed }) => {
     // State to track the "Don't show this again" checkbox.
     const [dontShowAgain, setDontShowAgain] = useState(false);
+    // State to manage the animation, allowing for a smooth entrance.
+    const [isShowing, setIsShowing] = useState(false);
+
+    useEffect(() => {
+        // When the modal is set to open, we delay setting `isShowing` to true.
+        // This allows React to render the component with its initial (hidden) styles first,
+        // and then apply the 'showing' styles, triggering the CSS transition.
+        if (isOpen) {
+            const timer = setTimeout(() => setIsShowing(true), 10);
+            return () => clearTimeout(timer);
+        } else {
+            setIsShowing(false);
+        }
+    }, [isOpen]);
 
     // If the modal isn't open, render nothing.
     if (!isOpen) return null;
@@ -36,14 +50,14 @@ export const DescriptionModal: React.FC<DescriptionModalProps> = ({ isOpen, onCl
     // Note: A more robust implementation would handle the 'Escape' key to close the modal and implement a full focus trap.
     return (
         <div 
-            className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center p-4"
+            className={`fixed inset-0 z-50 flex justify-center items-center p-4 transition-opacity duration-300 ease-out ${isShowing ? 'bg-black bg-opacity-60' : 'bg-opacity-0'}`}
             onClick={onClose}
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
         >
             <div 
-                className="bg-white dark:bg-slate-800 rounded-xl shadow-2xl w-full max-w-md m-4 transform transition-all duration-300 ease-out"
+                className={`bg-white dark:bg-slate-800 rounded-xl shadow-2xl w-full max-w-md m-4 transform transition-all duration-300 ease-out ${isShowing ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
                 // Prevents closing the modal when clicking inside the content area.
                 onClick={(e) => e.stopPropagation()}
             >
