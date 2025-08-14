@@ -16,8 +16,6 @@ Before setting up the pipeline, ensure you have the following:
 4.  **Build Tool**: The project is configured to use a build tool like **Vite**. A `package.json` with a `build` script (`"build": "vite build"`) is required.
 5.  **Web Server**: A web server like Nginx or Apache configured on the remote server to serve the contents of the `dist` directory.
 
-> **Note on Project Structure:** This guide assumes the project uses a standard build tool like Vite. The current project structure uses direct ESM imports and will need to be adapted to a Vite-based setup for this pipeline to function as described.
-
 ---
 
 ## ⚙️ Pipeline Configuration
@@ -78,52 +76,73 @@ jobs:
       - name: Package Build Artifacts
         run: zip -r dist.zip dist
 
-      # 6. Deploy to server via SSH
-      - name: Deploy to Server
-        uses: appleboy/ssh-action@master
+      # 6. Copy build archive to server
+      - name: Copy package to server
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "dist.zip"
+          target: "/tmp" # Copy to a temporary directory
+
+      # 7. Deploy on server
+      - name: Deploy on Server
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Copy the zip file to the target path on the server
-            scp -o StrictHostKeyChecking=no dist.zip ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_TARGET_PATH }}
+            # Ensure the target directory exists, creating it if necessary
+            mkdir -p ${{ secrets.SSH_TARGET_PATH }}
             
-            # Connect to the server and run deployment commands
-            ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-              cd ${{ secrets.SSH_TARGET_PATH }}
-              # Unzip the file, overwriting existing files without prompting
-              unzip -o dist.zip
-              # Remove the zip file after extraction
-              rm dist.zip
-            EOF
+            # Navigate to the target path and safely clear old content
+            cd ${{ secrets.SSH_TARGET_PATH }} && rm -rf ./*
+            
+            # Unzip the new build from the temporary location
+            unzip /tmp/dist.zip
+            
+            # Clean up the temporary archive
+            rm /tmp/dist.zip
 ```
 
 ---
 
+## 🛡️ Deployment Strategy and Best Practices
+
+To ensure deployments are safe and reliable, this pipeline uses a **"clean deploy"** strategy. This addresses two common issues: deploying to a new server and cleaning up old build files.
+
+### Why not just delete and replace the folder?
+
+While deleting the entire deployment folder (e.g., `rm -rf /var/www/problembuddy`) and replacing it seems simple, it is not a standard practice for a few important reasons:
+
+1.  **Application Downtime**: There is a brief but critical window of time between deleting the old folder and the new one being fully copied. Any user trying to access the site during this window will receive a "404 Not Found" error.
+2.  **Risk of Failed Deployment**: If the copy process fails midway, the application is left in a broken, non-existent state, requiring manual intervention to fix.
+3.  **Permission Issues**: The parent directory (`/var/www/`) may have specific ownership or permissions. Deleting and re-creating the `problembuddy` folder could reset its permissions, potentially preventing the web server (like Nginx) from being able to read the files.
+
+### The "Clean Deploy" Approach
+
+Our pipeline avoids these risks with a safer, more robust process:
+
+1.  **Ensure Directory Exists**: The `mkdir -p ${{ secrets.SSH_TARGET_PATH }}` command will create the full directory path if it doesn't already exist. If it does exist, the command does nothing. This makes the first-time deployment seamless.
+2.  **Clear Contents, Not the Folder**: Instead of deleting the folder itself, we navigate into it (`cd`) and then run `rm -rf ./*`. This command deletes all files and subdirectories *inside* the target path but leaves the main directory and its permissions intact. This is much safer and avoids any downtime.
+3.  **Atomic Operation**: The new build is unzipped into the now-empty directory. This operation is very fast, minimizing the transition time between the old and new versions.
+
+This method guarantees that your application directory is always in a valid state and that each new deployment starts with a clean slate, free of any old, unused asset files.
+
 ##  workflow-summary Flow Summary
 
-Here’s a step-by-step breakdown of what the `deploy.yml` workflow does:
+Here’s a step-by-step breakdown of what the updated `deploy.yml` workflow does:
 
 1.  **Trigger**: The workflow automatically starts when you `git push` a commit to the `main` branch.
-
-2.  **Checkout Code**: The first step checks out your repository's code into the GitHub Actions runner environment.
-
-3.  **Set up Node.js**: It installs the specified version of Node.js and sets up caching for `node_modules` to speed up future builds.
-
-4.  **Install Dependencies**: It runs `npm install` to download all the project dependencies defined in `package.json` and `package-lock.json`.
-
-5.  **Build Project**: It executes the `npm run build` command. For a Vite project, this compiles the React/TypeScript code, bundles assets, and places the production-ready static files into a `dist` directory.
-
-6.  **Package Artifacts**: It creates a `dist.zip` file containing the contents of the `dist` directory. This makes transferring the files to the server faster and more efficient.
-
-7.  **Deploy to Server**:
-    - This step uses the `appleboy/ssh-action` community action, which simplifies SSH operations.
-    - It authenticates with the server using the secrets you configured.
-    - It uses `scp` (Secure Copy Protocol) to transfer the `dist.zip` file from the runner to the `SSH_TARGET_PATH` on your server.
-    - It then establishes an SSH connection to the server and executes a series of shell commands:
-        - `cd ${{ secrets.SSH_TARGET_PATH }}`: Navigates to the deployment directory.
-        - `unzip -o dist.zip`: Extracts the contents of the zip file. The `-o` flag ensures that existing files are overwritten without any user prompt.
-        - `rm dist.zip`: Deletes the zip archive to clean up the server.
+2.  **Checkout & Build**: It checks out the code, installs Node.js, installs dependencies, and runs the `npm run build` command to generate the `dist` directory.
+3.  **Package**: It creates a `dist.zip` archive from the `dist` directory to make the transfer to the server a single, efficient operation.
+4.  **Secure Copy (SCP)**: It uses `appleboy/scp-action` to securely copy the `dist.zip` file to a temporary location (`/tmp`) on the remote server.
+5.  **Deploy on Server**: It then uses `appleboy/ssh-action` to securely connect to the server and execute a deployment script:
+    -   `mkdir -p`: Creates the target directory if it doesn't exist.
+    -   `cd ... && rm -rf ./*`: Navigates to the directory and safely clears all its existing contents.
+    -   `unzip`: Extracts the new build from `/tmp/dist.zip` into the clean directory.
+    -   `rm`: Deletes the temporary zip archive to clean up.
 
 Once the workflow completes successfully, your latest changes will be live on your server.
