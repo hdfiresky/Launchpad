@@ -48,11 +48,11 @@ Making Problembuddy your own is simple. Here’s how you can add new apps or cha
 
   Adding a new web application requires editing only one file.
 
-  1.  **Locate the Configuration File**: All application definitions are stored in the `src/constants.ts` file.
+  1.  **Locate the Configuration File**: All application definitions are stored in the `constants.ts` file.
   2.  **Add Your App Object**: Add a new object to the `APPS` array. Each object must follow the `AppDefinition` structure, with these recommendations for content:
 
       ```typescript
-      // src/constants.ts
+      // in constants.ts
       {
         id: string;              // A unique identifier (e.g., 'my-new-app').
         title: string;           // The app name. Keep it concise (e.g., "Google Search").
@@ -66,7 +66,7 @@ Making Problembuddy your own is simple. Here’s how you can add new apps or cha
   3.  **Example (External Link)**: To add a link to DEV Community, you would add this to the `APPS` array:
 
       ```typescript
-      // in src/constants.ts
+      // in constants.ts
       {
         id: 'dev-community',
         title: 'DEV Community',
@@ -81,7 +81,7 @@ Making Problembuddy your own is simple. Here’s how you can add new apps or cha
   4. **Example (Relative Path)**: You can also link to pages within your own site by using a relative path for the `href` property. This is useful for linking to other tools or pages hosted on the same domain. To add a link to an internal "About Us" page located at `/about.html`:
 
       ```typescript
-      // in src/constants.ts
+      // in constants.ts
       {
         id: 'about-us',
         title: 'About Us',
@@ -99,20 +99,18 @@ Making Problembuddy your own is simple. Here’s how you can add new apps or cha
 
   <br>
 
-  The main logo in the header is located in the `src/components/Header.tsx` file.
+  The main logo is configured centrally for easy replacement.
 
-  1.  **Open the Header Component**: Navigate to `src/components/Header.tsx`.
-  2.  **Replace the SVG**: Find the `<svg>` element. You can replace it with your own SVG code or an `<img>` tag.
-      -   **Logo Size:** The logo is displayed at 32x32 pixels (`h-8 w-8` in Tailwind CSS). For best results, use a **square logo** (1:1 aspect ratio) with a transparent background. An image size of at least **64x64 pixels** is recommended to ensure it looks sharp.
-  3.  **Example using an `<img>` tag**:
+  1.  **Replace the Icon File**: Add your logo file to the project's root directory (the same level as `index.html`). The default logo is `brand-icon.svg`. You can use SVG, PNG, or any other web-compatible image format.
+        - **Optimal Size**: The logo is displayed at 32x32 pixels on screen (`h-8 w-8` in Tailwind CSS). For best results on all screen densities, use a **square logo** (1:1 aspect ratio) with a transparent background. If using a raster format like PNG, an image size of at least **128x128 pixels** is recommended to ensure it looks sharp on high-resolution displays. SVGs are recommended as they scale perfectly.
 
-      ```jsx
-      // src/components/Header.tsx
-      <div className="flex items-center space-x-3">
-          {/* Replace the SVG with an <img> tag */}
-          <img src="/your-logo.png" alt="Problembuddy Logo" className="h-8 w-8" />
-          <span className="text-2xl font-bold ...">Problembuddy</span>
-      </div>
+  2.  **Update the Configuration**: Open the `config.ts` file in the root directory.
+  3.  **Change the Path**: Modify the `BRAND_ICON_URL` constant to point to your new logo file.
+
+      ```typescript
+      // in config.ts
+      // Update this path to your logo file
+      export const BRAND_ICON_URL = '/your-new-logo.png';
       ```
 
 </details>
