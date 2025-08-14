@@ -1,4 +1,3 @@
-
 import type { AppDefinition } from './types';
 
 /**
@@ -8,35 +7,35 @@ import type { AppDefinition } from './types';
  */
 export const APPS: AppDefinition[] = [
   {
-    id: 'google-search',
-    title: 'Google Search',
-    description: 'The world\'s most popular search engine.',
-    longDescription: 'Access the full power of Google Search to find information, images, videos, and more. Google\'s mission is to organize the world\'s information and make it universally accessible and useful.',
-    iconUrl: 'https://i.ibb.co/bF00tqr/google-icon.png',
-    href: 'https://www.google.com'
+    id: 'dramaverse',
+    title: 'Dramaverse',
+    description: 'Find Korean, Chinese, or any other dramas.',
+    longDescription: 'Explore a vast universe of television dramas from across Asia and beyond. Get recommendations, read reviews, and find your next binge-worthy show with Dramaverse.',
+    iconUrl: 'https://i.ibb.co/hKqzD8W/drama-icon.png',
+    href: '/dramaverse'
   },
   {
-    id: 'microsoft-bing',
-    title: 'Microsoft Bing',
-    description: 'Discover a new way to search.',
-    longDescription: 'Microsoft Bing helps you turn information into action, making it faster and easier to go from searching to doing. It integrates AI-powered features for a more comprehensive search experience.',
-    iconUrl: 'https://i.ibb.co/kKWBpYG/bing-icon.png',
-    href: 'https://www.bing.com'
+    id: 'novel-finder-pro',
+    title: 'Novel Finder Pro',
+    description: 'Find your next best web novel for your picking.',
+    longDescription: 'Discover your next favorite read with Novel Finder Pro. Our advanced algorithm helps you find hidden gems and popular web novels tailored to your unique taste.',
+    iconUrl: 'https://i.ibb.co/L5hYhL9/novel-icon.png',
+    href: '/novel-finder-pro'
   },
   {
-    id: 'wikipedia',
-    title: 'Wikipedia',
-    description: 'The free encyclopedia.',
-    longDescription: 'Wikipedia is a multilingual free online encyclopedia written and maintained by a community of volunteers through open collaboration and a wiki-based editing system. It is the largest and most-read reference work in history.',
-    iconUrl: 'https://i.ibb.co/GvxYpS4/wikipedia-icon.png',
-    href: 'https://www.wikipedia.org'
+    id: 'epub-tagger',
+    title: 'Epub Tagger',
+    description: 'Automatically tag your uploaded epub novels.',
+    longDescription: 'Organize your digital library effortlessly. Upload your epub files and let our powerful algorithm analyze the content to assign relevant and accurate tags automatically.',
+    iconUrl: 'https://i.ibb.co/Q8Q2vGj/tag-icon.png',
+    href: '/epub-tagger'
   },
   {
-    id: 'github',
-    title: 'GitHub',
-    description: 'Where the world builds software.',
-    longDescription: 'GitHub is a provider of Internet hosting for software development and version control using Git. It offers the distributed version control and source code management functionality of Git, plus its own features.',
-    iconUrl: 'https://i.ibb.co/Ny2xsmR/github-icon.png',
-    href: 'https://www.github.com'
+    id: 'epub-finder',
+    title: 'Epub Finder',
+    description: 'Search for keywords within your epub files.',
+    longDescription: 'Quickly locate specific information within your epub collection. Upload a book and search for keywords or phrases to find exactly what you\'re looking for in seconds.',
+    iconUrl: 'https://i.ibb.co/Xz9Z2fD/search-epub-icon.png',
+    href: '/epub-finder'
   }
 ];

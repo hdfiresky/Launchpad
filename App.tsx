@@ -74,9 +74,9 @@ const App: React.FC = () => {
       <Header />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">Your Digital Toolkit</h1>
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">Your Entertainment Hub</h1>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400">
-                A curated collection of powerful applications to streamline your workflow and solve your problems efficiently.
+                A curated collection of tools to discover, organize, and enjoy your favorite dramas and novels.
             </p>
         </div>
         
