@@ -5,7 +5,7 @@ type Theme = 'light' | 'dark';
 // The type for the context value. `setTheme` should correctly reflect the type from `useState`.
 type ThemeContextType = {
   theme: Theme;
-  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
+  setTheme: (value: React.SetStateAction<Theme>, event?: React.MouseEvent) => void;
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -23,7 +23,7 @@ const getInitialTheme = (): Theme => {
 };
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [theme, internalSetTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -39,9 +39,50 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   }, [theme]);
 
-  // Use React.createElement instead of JSX to avoid syntax errors in a .ts file.
-  // Also, provide the correct value for the context, removing the incorrect type assertion.
-  return React.createElement(ThemeContext.Provider, { value: { theme, setTheme } }, children);
+  const setTheme = (value: React.SetStateAction<Theme>, event?: React.MouseEvent) => {
+    const newTheme = value instanceof Function ? value(theme) : value;
+
+    // @ts-ignore: `startViewTransition` is not in all browser types yet.
+    if (!document.startViewTransition || !event) {
+      internalSetTheme(newTheme);
+      return;
+    }
+
+    const x = event.clientX;
+    const y = event.clientY;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    // @ts-ignore
+    const transition = document.startViewTransition(() => {
+      internalSetTheme(newTheme);
+    });
+
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ];
+
+      document.documentElement.animate(
+        {
+          clipPath: clipPath,
+        },
+        {
+          duration: 500,
+          easing: 'ease-in-out',
+          // Always apply the animation to the new content
+          pseudoElement: '::view-transition-new(root)',
+        }
+      );
+    });
+  };
+
+  const contextValue = { theme, setTheme };
+
+  return React.createElement(ThemeContext.Provider, { value: contextValue }, children);
 };
 
 export const useTheme = (): ThemeContextType => {

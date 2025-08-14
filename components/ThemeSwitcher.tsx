@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTheme } from '../hooks/useTheme';
 import { SunIcon } from './icons/SunIcon';
@@ -10,8 +9,9 @@ export const ThemeSwitcher: React.FC = () => {
   // Handle case where theme might not be initialized on server
   if (!theme) return null;
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+  const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
+    // Pass the event to allow the theme hook to implement a position-aware animation
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'), event);
   };
 
   return (
