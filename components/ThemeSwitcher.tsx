@@ -10,7 +10,6 @@ export const ThemeSwitcher: React.FC = () => {
   if (!theme) return null;
 
   const toggleTheme = () => {
-    // Pass the event to allow the theme hook to implement a position-aware animation
     setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 

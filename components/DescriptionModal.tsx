@@ -15,7 +15,7 @@ interface DescriptionModalProps {
 }
 
 /**
- * A modal dialog that displays detailed information about an application before navigation.
+ * A modal dialog that gracefully animates into view to display detailed information about an application before navigation.
  * It provides the user with an option to proceed to the app or to bypass this modal in the future.
  * The component is designed to be accessible, closing on overlay clicks.
  */

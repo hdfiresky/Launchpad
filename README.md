@@ -21,7 +21,8 @@ Problembuddy acts as your personal launchpad, providing a clean and organized da
 ## ✨ Core Features
 
 -   **Centralized Dashboard:** All your favorite apps in one place for quick and easy access.
--   **Dual View Modes:** Seamlessly switch between a beautiful `Grid View` and a detailed `List View` to suit your preference.
+-   **Dual View Modes:** Seamlessly switch between a beautiful `Grid View` and a detailed `List View`.
+-   **Fluid Animations:** Enjoy a polished experience with smooth transitions for view switching, list expansion, and modal dialogs.
 -   **Rich App Previews:** Get a detailed description of an app *before* you open it, thanks to an elegant pop-up modal.
 -   **Smart Memory:** Use the "Don't show this again" option to bypass the description modal for apps you use frequently. Your choice is saved locally.
 -   **Fully Responsive:** Looks and works great on any device, from large desktop monitors to mobile phones.

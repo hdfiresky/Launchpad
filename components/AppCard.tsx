@@ -12,7 +12,7 @@ interface AppCardProps {
 /**
  * A presentational component for a single application in the grid view.
  * Displays the app's icon, title, and short description in a card format.
- * Includes hover effects for better user interaction.
+ * Includes a subtle lift-and-scale hover effect for better user interaction.
  */
 export const AppCard: React.FC<AppCardProps> = ({ app, onAppClick }) => {
     return (
