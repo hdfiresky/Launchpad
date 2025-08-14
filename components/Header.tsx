@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { ThemeSwitcher } from './ThemeSwitcher';
 
 /**
  * Renders the sticky header for the application.
@@ -18,6 +18,7 @@ export const Header: React.FC = () => {
                         </svg>
                         <span className="text-2xl font-bold text-slate-900 dark:text-white">Problembuddy</span>
                     </div>
+                    <ThemeSwitcher />
                 </div>
             </div>
         </header>
