@@ -15,7 +15,7 @@ export const APPS: AppDefinition[] = [
     longDescription:
       "Explore a vast universe of television dramas from across Asia and beyond. Get recommendations, read reviews, and find your next binge-worthy show with Dramaverse.",
     iconUrl: BASE_URL + "/dramaverse/pwa-512x512.png",
-    href: "/dramaverse",
+    href: "/dramaverse/",
   },
   {
     id: "novel-finder-pro",
@@ -24,7 +24,7 @@ export const APPS: AppDefinition[] = [
     longDescription:
       "Discover your next favorite read with Novel Finder Pro. Our advanced algorithm helps you find hidden gems and popular web novels tailored to your unique taste.",
     iconUrl: BASE_URL + "/dramaverse/pwa-512x512.png",
-    href: "/novel-finder-pro",
+    href: "/novel-finder-pro/",
   },
   {
     id: "epub-tagger",
@@ -33,7 +33,7 @@ export const APPS: AppDefinition[] = [
     longDescription:
       "Organize your digital library effortlessly. Upload your epub files and let our powerful algorithm analyze the content to assign relevant and accurate tags automatically.",
     iconUrl: BASE_URL + "/dramaverse/pwa-512x512.png",
-    href: "/epub-tagger",
+    href: "/epub-tagger/",
   },
   {
     id: "epub-search",
@@ -42,6 +42,6 @@ export const APPS: AppDefinition[] = [
     longDescription:
       "Quickly locate specific information within your epub collection. Upload a book and search for keywords or phrases to find exactly what you're looking for in seconds.",
     iconUrl: BASE_URL + "/dramaverse/pwa-512x512.png",
-    href: "/epub-search",
+    href: "/epub-search/",
   },
 ];
