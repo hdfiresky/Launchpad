@@ -10,18 +10,14 @@ interface DescriptionModalProps {
     onClose: () => void;
     /** The application data to display in the modal. */
     app: AppDefinition;
-    /** Function to call when the user clicks the "Proceed" button. It passes the app and the "Don't show again" choice. */
-    onProceed: (app: AppDefinition, dontShowAgain: boolean) => void;
 }
 
 /**
- * A modal dialog that gracefully animates into view to display detailed information about an application before navigation.
- * It provides the user with an option to proceed to the app or to bypass this modal in the future.
+ * A modal dialog that gracefully animates into view to display detailed information about an application.
+ * It provides the user with an option to proceed to the app or to close the modal.
  * The component is designed to be accessible, closing on overlay clicks.
  */
-export const DescriptionModal: React.FC<DescriptionModalProps> = ({ isOpen, onClose, app, onProceed }) => {
-    // State to track the "Don't show this again" checkbox.
-    const [dontShowAgain, setDontShowAgain] = useState(false);
+export const DescriptionModal: React.FC<DescriptionModalProps> = ({ isOpen, onClose, app }) => {
     // State to manage the animation, allowing for a smooth entrance.
     const [isShowing, setIsShowing] = useState(false);
 
@@ -39,13 +35,6 @@ export const DescriptionModal: React.FC<DescriptionModalProps> = ({ isOpen, onCl
 
     // If the modal isn't open, render nothing.
     if (!isOpen) return null;
-
-    /**
-     * A wrapper for the onProceed callback that passes the current state of the checkbox.
-     */
-    const handleProceedClick = () => {
-        onProceed(app, dontShowAgain);
-    };
 
     // Note: A more robust implementation would handle the 'Escape' key to close the modal and implement a full focus trap.
     return (
@@ -76,32 +65,19 @@ export const DescriptionModal: React.FC<DescriptionModalProps> = ({ isOpen, onCl
                         {app.longDescription}
                     </p>
 
-                    <div className="mb-6">
-                        {/* Checkbox for the "Don't show again" preference */}
-                        <label className="flex items-center space-x-2 cursor-pointer text-slate-600 dark:text-slate-300">
-                            <input
-                                type="checkbox"
-                                checked={dontShowAgain}
-                                onChange={(e) => setDontShowAgain(e.target.checked)}
-                                className="h-4 w-4 rounded text-brand-primary focus:ring-brand-primary border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700"
-                            />
-                            <span>Don't show this again for this app</span>
-                        </label>
-                    </div>
-
                     <div className="flex flex-col sm:flex-row-reverse gap-3">
-                        <button
-                            onClick={handleProceedClick}
-                            className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-brand-primary hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-slate-800 transition-colors"
+                        <a
+                            href={app.href}
+                            className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-brand-primary hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-slate-800 transition-colors no-underline"
                         >
-                            Proceed to App
+                            Go to App
                             <ExternalLinkIcon className="ml-2 -mr-1 h-5 w-5" />
-                        </button>
+                        </a>
                         <button
                             onClick={onClose}
                             className="w-full sm:w-auto inline-flex justify-center px-4 py-2 border border-slate-300 dark:border-slate-600 text-sm font-medium rounded-md text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-slate-800 transition-colors"
                         >
-                            Cancel
+                            Close
                         </button>
                     </div>
                 </div>
