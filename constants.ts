@@ -32,7 +32,7 @@ export const APPS: AppDefinition[] = [
   },
   {
     id: 'epub-search',
-    title: 'Epub Searh',
+    title: 'Epub Search',
     description: 'Search for keywords within your epub files.',
     longDescription: 'Quickly locate specific information within your epub collection. Upload a book and search for keywords or phrases to find exactly what you\'re looking for in seconds.',
     iconUrl: 'https://problembuddy.com/dramaverse/pwa-512x512.png',
