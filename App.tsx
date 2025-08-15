@@ -9,13 +9,12 @@ import { APPS } from './constants';
 import type { AppDefinition, ViewMode } from './types';
 import { GridIcon } from './components/icons/GridIcon';
 import { ListIcon } from './components/icons/ListIcon';
-import { useLocalStorage } from './hooks/useLocalStorage';
 
 /**
  * The main application component.
  * It orchestrates the entire UI, including the header, footer,
  * main content area with app listings, and the view mode controls.
- * It also manages the state for the app display and the description modal.
+ * It also manages the state for the description modal.
  */
 const App: React.FC = () => {
   // State to manage the current view mode ('grid' or 'list').
@@ -25,25 +24,15 @@ const App: React.FC = () => {
   // State to control the visibility of the description modal.
   const [isModalOpen, setIsModalOpen] = useState(false);
   
-  // Custom hook to manage user's "Don't show again" preferences in localStorage.
-  // This persists the user's choice across sessions.
-  // The key 'problembuddy-dont-show-again' is used to store the data.
-  const [dontShowAgainRegistry, setDontShowAgainRegistry] = useLocalStorage<Record<string, boolean>>('problembuddy-dont-show-again', {});
-  
   /**
-   * Handles clicking on an app.
-   * If the user has previously checked "Don't show again" for this app,
-   * it opens the app's link directly. Otherwise, it opens the description modal.
+   * Handles clicking on an app's info icon.
+   * It opens the description modal to show more details about the app.
    * useCallback is used for performance optimization, preventing re-creation on re-renders.
    */
-  const handleAppClick = useCallback((app: AppDefinition) => {
-    if (dontShowAgainRegistry[app.id]) {
-        window.open(app.href, '_blank', 'noopener,noreferrer');
-    } else {
-        setSelectedApp(app);
-        setIsModalOpen(true);
-    }
-  }, [dontShowAgainRegistry]);
+  const handleInfoClick = useCallback((app: AppDefinition) => {
+    setSelectedApp(app);
+    setIsModalOpen(true);
+  }, []);
 
   /**
    * Closes the description modal and resets the selected app state.
@@ -53,20 +42,6 @@ const App: React.FC = () => {
     setIsModalOpen(false);
     setSelectedApp(null);
   }, []);
-
-  /**
-   * Handles the "Proceed" action from the description modal.
-   * It updates the "Don't show again" registry if the checkbox was ticked,
-   * opens the app's link in a new tab, and closes the modal.
-   */
-  const handleProceed = useCallback((app: AppDefinition, dontShowAgain: boolean) => {
-    if (dontShowAgain) {
-        // Updates the localStorage-backed state.
-        setDontShowAgainRegistry(prev => ({ ...prev, [app.id]: true }));
-    }
-    window.open(app.href, '_blank', 'noopener,noreferrer');
-    handleCloseModal();
-  }, [handleCloseModal, setDontShowAgainRegistry]);
 
 
   return (
@@ -108,9 +83,9 @@ const App: React.FC = () => {
         {/* This container animates the view switch. The key forces a re-mount, re-triggering the animation. */}
         <div key={viewMode} className="animate-fade-in-up">
             {viewMode === 'grid' ? (
-                <AppGrid apps={APPS} onAppClick={handleAppClick} />
+                <AppGrid apps={APPS} onInfoClick={handleInfoClick} />
             ) : (
-                <AppList apps={APPS} />
+                <AppList apps={APPS} onInfoClick={handleInfoClick} />
             )}
         </div>
       </main>
@@ -121,7 +96,6 @@ const App: React.FC = () => {
             isOpen={isModalOpen}
             onClose={handleCloseModal}
             app={selectedApp}
-            onProceed={handleProceed}
         />
       )}
     </div>
