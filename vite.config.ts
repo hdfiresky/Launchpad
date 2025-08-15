@@ -19,12 +19,11 @@ export default defineConfig(({ mode }) => {
       VitePWA({
         registerType: "autoUpdate",
         includeAssets: [
-          // "favicon.svg",
-          // "robots.txt",
+          "robots.txt",
           "favicon.png",
-          // "apple-touch-icon.png",
-          // "pwa-192x192.png",
-          // "pwa-512x512.png",
+          "apple-touch-icon.png",
+          "pwa-192x192.png",
+          "pwa-512x512.png",
         ],
         manifest: {
           name: "Launchpad",
@@ -36,17 +35,17 @@ export default defineConfig(({ mode }) => {
           theme_color: "#ffffff",
           icons: [
             {
-              src: "launchpad/favicon.png",
+              src: "launchpad/pwa-192x192.png",
               sizes: "192x192",
               type: "image/png",
             },
             {
-              src: "launchpad/favicon.png",
+              src: "launchpad/pwa-512x512.png",
               sizes: "512x512",
               type: "image/png",
             },
             {
-              src: "launchpad/favicon.png",
+              src: "launchpad/pwa-512x512.png",
               sizes: "512x512",
               type: "image/png",
               purpose: "any maskable",
