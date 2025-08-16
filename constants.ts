@@ -23,7 +23,7 @@ export const APPS: AppDefinition[] = [
     description: "Find your next best web novel for your picking.",
     longDescription:
       "Discover your next favorite read with Novel Finder Pro. Our advanced algorithm helps you find hidden gems and popular web novels tailored to your unique taste.",
-    iconUrl: BASE_URL + "/dramaverse/pwa-512x512.png",
+    iconUrl: BASE_URL + "/novel-finder-pro/pwa-512x512.png",
     href: "/novel-finder-pro/",
   },
   {
@@ -32,7 +32,7 @@ export const APPS: AppDefinition[] = [
     description: "Automatically tag your uploaded epub novels.",
     longDescription:
       "Organize your digital library effortlessly. Upload your epub files and let our powerful algorithm analyze the content to assign relevant and accurate tags automatically.",
-    iconUrl: BASE_URL + "/dramaverse/pwa-512x512.png",
+    iconUrl: BASE_URL + "/epub-tagger/pwa-512x512.png",
     href: "/epub-tagger/",
   },
   {
@@ -41,7 +41,7 @@ export const APPS: AppDefinition[] = [
     description: "Search for keywords within your epub files.",
     longDescription:
       "Quickly locate specific information within your epub collection. Upload a book and search for keywords or phrases to find exactly what you're looking for in seconds.",
-    iconUrl: BASE_URL + "/dramaverse/pwa-512x512.png",
+    iconUrl: BASE_URL + "/epub-search/pwa-512x512.png",
     href: "/epub-search/",
   },
 ];
