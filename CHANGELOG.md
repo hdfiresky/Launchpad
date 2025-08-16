@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.4.10...v0.5.0) (2025-08-16)
+
+
+### Features
+
+* adding more apps to launcher ([ad35388](https://github.com/hdfiresky/Problembuddy-deploy/commit/ad35388e0a63e5ecae5e7f8a3132857931048ce9))
+
+
+### Bug Fixes
+
+* image will be from each apps from now ([f82d26b](https://github.com/hdfiresky/Problembuddy-deploy/commit/f82d26b34f53aa67b35480a249acf32fb3b47855))
+
 ### [0.4.10](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.4.9...v0.4.10) (2025-08-16)
 
 ### [0.4.9](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.4.6...v0.4.9) (2025-08-16)
