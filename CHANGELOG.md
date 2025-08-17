@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.5.1...v0.5.2) (2025-08-17)
+
+
+### Features
+
+* reorder launchers removing duplicates ([3aa030e](https://github.com/hdfiresky/Problembuddy-deploy/commit/3aa030e809f6cd55ae216b1d8ed606af3979b68d))
+
 ### [0.5.1](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.5.0...v0.5.1) (2025-08-16)
 
 
