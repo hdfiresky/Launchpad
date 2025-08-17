@@ -71,7 +71,7 @@ export const APPS: AppDefinition[] = [
       "Generate detailed tutorials on any topic using a collaborative multi-agent AI system.",
     longDescription:
       "This application leverages a simulated multi-agent system to automatically generate detailed tutorials. Simply provide a topic, and the AI agents will collaborate: Agent 1 creates a logical outline, Agent 4 researches current information if needed, Agent 2 writes the content for each section, and Agent 3 assembles and formats the final tutorial. Watch the process unfold in real-time through the activity log.",
-    iconUrl: BASE_URL + "/tutorial/pwa-512x512.png",
+    iconUrl: BASE_URL + "/tutorial/pwa-512x512.webp",
     href: "/tutorial/",
   },
   {
