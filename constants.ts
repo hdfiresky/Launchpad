@@ -36,13 +36,23 @@ export const APPS: AppDefinition[] = [
     href: "/asset-generator/",
   },
   {
-    id: "epub-search",
-    title: "Epub Search",
-    description: "Search for keywords within your epub files.",
+    id: "ai-powered-task-manager",
+    title: "AI-Powered Task Manager",
+    description:
+      "A smart task manager that uses AI to automatically break down large tasks into smaller, actionable steps.",
     longDescription:
-      "Quickly locate specific information within your epub collection. Upload a book and search for keywords or phrases to find exactly what you're looking for in seconds.",
-    iconUrl: BASE_URL + "/epub-search/pwa-512x512.png",
-    href: "/epub-search/",
+      "Organize your workflow with an intelligent task management application. This app allows you to create, track, and prioritize tasks across different statuses like 'To Do', 'In Progress', and 'Done'. Its standout feature is an AI-powered capability, which leverages the Gemini API to analyze complex tasks and automatically suggest smaller, manageable sub-tasks, helping you improve productivity and tackle big projects with ease.",
+    iconUrl: BASE_URL + '/ai-powered-task-manager/pwa-512x512.png',
+    href: "/ai-powered-task-manager/",
+  },
+  {
+    id: "fleeting-notes",
+    title: "Fleeting Notes",
+    description: "Quick jots for passing thoughts or ideas.",
+    longDescription:
+      "Capture ideas as they occur—unstructured, instant, and meant to be processed or discarded shortly. Fleeting notes act as a temporary inbox of thoughts that may later evolve into refined, permanent knowledge.",
+    iconUrl: BASE_URL + "/fleeting-notes/icons/Icon-512.png",
+    href: "/fleeting-notes/",
   },
   {
     id: "deploy-helper",
@@ -74,35 +84,6 @@ export const APPS: AppDefinition[] = [
     href: "/epub-tagger/",
   },
   {
-    id: "fleeting-notes",
-    title: "Fleeting Notes",
-    description: "Quick jots for passing thoughts or ideas.",
-    longDescription:
-      "Capture ideas as they occur—unstructured, instant, and meant to be processed or discarded shortly. Fleeting notes act as a temporary inbox of thoughts that may later evolve into refined, permanent knowledge.",
-    iconUrl: BASE_URL + "/fleeting-notes/icons/Icon-512.png",
-    href: "/fleeting-notes/",
-  },
-  {
-    id: "novel-finder-pro",
-    title: "Novel Finder Pro",
-    description:
-      "An advanced web application for searching, filtering, and sorting a collection of novels.",
-    longDescription:
-      "Discover your next favorite read with Novel Finder Pro. This tool features multi-level sorting, advanced filtering by genres, tags, and ratings, and a powerful recommendation engine. Users can create accounts to save favorites, write reviews, and maintain a personal wishlist, all within a sleek, responsive interface.",
-    iconUrl: BASE_URL + "/novel-finder-pro/pwa-512x512.png",
-    href: "/novel-finder-pro/",
-  },
-  {
-    id: "ai-powered-task-manager",
-    title: "AI-Powered Task Manager",
-    description:
-      "A smart task manager that uses AI to automatically break down large tasks into smaller, actionable steps.",
-    longDescription:
-      "Organize your workflow with an intelligent task management application. This app allows you to create, track, and prioritize tasks across different statuses like 'To Do', 'In Progress', and 'Done'. Its standout feature is an AI-powered capability, which leverages the Gemini API to analyze complex tasks and automatically suggest smaller, manageable sub-tasks, helping you improve productivity and tackle big projects with ease.",
-    iconUrl: BASE_URL + '/ai-powered-task-manager/pwa-512x512.png',
-    href: "/ai-powered-task-manager/",
-  },
-  {
     id: "video-to-learning-app",
     title: "Video to Learning App",
     description:
@@ -111,5 +92,14 @@ export const APPS: AppDefinition[] = [
       "Transform any educational YouTube video into a hands-on learning experience. Paste a URL, and our AI will analyze the content to design and build a custom, interactive mini-app that helps you master the video's key concepts. You can play with the generated app, inspect its code, and even modify the AI's design specifications to create your own variations. It's a powerful and fun way to learn by doing.",
     iconUrl: BASE_URL + "/video-to-learning-app/pwa-512x512.png",
     href: "/video-to-learning-app/",
+  },
+  {
+    id: "epub-search",
+    title: "Epub Search",
+    description: "Search for keywords within your epub files.",
+    longDescription:
+      "Quickly locate specific information within your epub collection. Upload a book and search for keywords or phrases to find exactly what you're looking for in seconds.",
+    iconUrl: BASE_URL + "/epub-search/pwa-512x512.png",
+    href: "/epub-search/",
   },
 ];
