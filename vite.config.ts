@@ -36,17 +36,17 @@ export default defineConfig(({ mode }) => {
           theme_color: "#ffffff",
           icons: [
             {
-              src: "/launchpad/pwa-192x192.webp?v=2025081802",
+              src: "/launchpad/pwa-192x192.webp?v=2025081803",
               sizes: "192x192",
               type: "image/webp",
             },
             {
-              src: "/launchpad/pwa-512x512.webp?v=2025081802",
+              src: "/launchpad/pwa-512x512.webp?v=2025081803",
               sizes: "512x512",
               type: "image/webp",
             },
             {
-              src: "/launchpad/pwa-512x512.webp?v=2025081802",
+              src: "/launchpad/pwa-512x512.webp?v=2025081803",
               sizes: "512x512",
               type: "image/webp",
               purpose: "any maskable",
