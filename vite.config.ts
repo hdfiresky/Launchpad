@@ -20,10 +20,10 @@ export default defineConfig(({ mode }) => {
         registerType: "autoUpdate",
         includeAssets: [
           "robots.txt",
-          "favicon.png",
+          "favicon.v2.png",
           "apple-touch-icon.webp",
-          "pwa-192x192.webp",
-          "pwa-512x512.webp",
+          "pwa-192x192.v2.webp",
+          "pwa-512x512.v2.webp",
         ],
         manifest: {
           name: "Launchpad",
@@ -35,17 +35,17 @@ export default defineConfig(({ mode }) => {
           theme_color: "#ffffff",
           icons: [
             {
-              src: "/launchpad/pwa-192x192.webp",
+              src: "/launchpad/pwa-192x192.v2.webp",
               sizes: "192x192",
               type: "image/webp",
             },
             {
-              src: "/launchpad/pwa-512x512.webp",
+              src: "/launchpad/pwa-512x512.v2.webp",
               sizes: "512x512",
               type: "image/webp",
             },
             {
-              src: "/launchpad/pwa-512x512.webp",
+              src: "/launchpad/pwa-512x512.v2.webp",
               sizes: "512x512",
               type: "image/webp",
               purpose: "any maskable",
