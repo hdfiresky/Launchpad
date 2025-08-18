@@ -26,8 +26,8 @@ export default defineConfig(({ mode }) => {
           "pwa-512x512.v2.webp",
         ],
         manifest: {
-          name: "Launchpad",
-          short_name: "Launch",
+          name: "Problembuddy",
+          short_name: "Problem Buddy",
           start_url: "/",
           scope: "/",
           display: "standalone",
