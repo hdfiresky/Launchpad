@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.7](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.6.6...v0.6.7) (2025-08-18)
+
+
+### Features
+
+* icon for launchpad changed ([8f5b199](https://github.com/hdfiresky/Problembuddy-deploy/commit/8f5b19944a1aa1f37209b02f3fc799d02b684017))
+
 ### [0.6.6](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.6.5...v0.6.6) (2025-08-18)
 
 
