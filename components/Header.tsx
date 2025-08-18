@@ -14,7 +14,7 @@ export const Header: React.FC = () => {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center space-x-3">
                         {/* The application logo. The path is configured in `config.ts`. */}
-                        <img src={BRAND_ICON_URL} alt="Problembuddy logo" className="h-8 w-8" />
+                        <img src={BRAND_ICON_URL} alt="Problembuddy logo" className="h-7 w-7" />
                         <span className="text-2xl font-bold text-slate-900 dark:text-white">Problembuddy</span>
                     </div>
                     <ThemeSwitcher />
