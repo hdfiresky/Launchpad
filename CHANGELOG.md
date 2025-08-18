@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.4](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.7.3...v0.7.4) (2025-08-18)
+
+
+### Bug Fixes
+
+* launchpad name changed to problembuddy ([26b175c](https://github.com/hdfiresky/Problembuddy-deploy/commit/26b175c6abdfa8c9259c2742100bc28156890e7e))
+
 ### [0.7.3](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.7.0...v0.7.3) (2025-08-18)
 
 
