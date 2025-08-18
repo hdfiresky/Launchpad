@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       VitePWA({
         registerType: "autoUpdate",
+        injectRegister:"auto",
         includeAssets: [
           "robots.txt",
           "favicon.v2.png",
@@ -35,17 +36,17 @@ export default defineConfig(({ mode }) => {
           theme_color: "#ffffff",
           icons: [
             {
-              src: "/launchpad/pwa-192x192.v2.webp",
+              src: "/launchpad/pwa-192x192.v2.webp?v=2025081801",
               sizes: "192x192",
               type: "image/webp",
             },
             {
-              src: "/launchpad/pwa-512x512.v2.webp",
+              src: "/launchpad/pwa-512x512.v2.webp?v=2025081801",
               sizes: "512x512",
               type: "image/webp",
             },
             {
-              src: "/launchpad/pwa-512x512.v2.webp",
+              src: "/launchpad/pwa-512x512.v2.webp?v=2025081801",
               sizes: "512x512",
               type: "image/webp",
               purpose: "any maskable",
@@ -53,6 +54,8 @@ export default defineConfig(({ mode }) => {
           ],
         },
         workbox: {
+          clientsClaim:true,
+          skipWaiting:true,
           cleanupOutdatedCaches: true,
         },
       }),
