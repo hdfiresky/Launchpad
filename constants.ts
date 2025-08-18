@@ -42,7 +42,7 @@ export const APPS: AppDefinition[] = [
       "A smart task manager that uses AI to automatically break down large tasks into smaller, actionable steps.",
     longDescription:
       "Organize your workflow with an intelligent task management application. This app allows you to create, track, and prioritize tasks across different statuses like 'To Do', 'In Progress', and 'Done'. Its standout feature is an AI-powered capability, which leverages the Gemini API to analyze complex tasks and automatically suggest smaller, manageable sub-tasks, helping you improve productivity and tackle big projects with ease.",
-    iconUrl: BASE_URL + '/ai-powered-task-manager/pwa-512x512.png',
+    iconUrl: BASE_URL + '/ai-powered-task-manager/pwa-512x512.webp',
     href: "/ai-powered-task-manager/",
   },
   {
