@@ -11,7 +11,7 @@ export const APPS: AppDefinition[] = [
   {
     id: "dramaverse",
     title: "Dramaverse",
-    description: "Find Korean, Chinese, or any other dramas.",
+    description: "Track, rate, and explore top K-dramas and C-dramas.",
     longDescription:
       "Explore a vast universe of television dramas from across Asia and beyond. Get recommendations, read reviews, and find your next binge-worthy show with Dramaverse.",
     iconUrl: BASE_URL + "/dramaverse/pwa-512x512.webp",
@@ -20,7 +20,7 @@ export const APPS: AppDefinition[] = [
   {
     id: "novel-finder-pro",
     title: "Novel Finder Pro",
-    description: "Find your next best web novel for your picking.",
+    description: "Your personal web novel discovery tool.",
     longDescription:
       "Discover your next favorite read with Novel Finder Pro. Our advanced algorithm helps you find hidden gems and popular web novels tailored to your unique taste.",
     iconUrl: BASE_URL + "/novel-finder-pro/pwa-512x512.webp",
@@ -29,7 +29,7 @@ export const APPS: AppDefinition[] = [
   {
     id: "asset-generator",
     title: "Asset Generator Pro",
-    description: "PWA & Extension Icon Sets from a single image.",
+    description: "One-click icon generation for web apps.",
     longDescription:
       "Streamline your development workflow by generating complete icon sets for Progressive Web Apps (PWAs) and browser extensions from a single image. This tool automatically removes white backgrounds, previews the result, and generates all the necessary icon sizes in a downloadable zip file.",
     iconUrl: BASE_URL + "/asset-generator/pwa-512x512.png",
@@ -39,7 +39,7 @@ export const APPS: AppDefinition[] = [
     id: "ai-powered-task-manager",
     title: "AI-Powered Task Manager",
     description:
-      "A smart task manager that uses AI to automatically break down large tasks into smaller, actionable steps.",
+      "AI-powered task manager with auto sub-tasks.",
     longDescription:
       "Organize your workflow with an intelligent task management application. This app allows you to create, track, and prioritize tasks across different statuses like 'To Do', 'In Progress', and 'Done'. Its standout feature is an AI-powered capability, which leverages the Gemini API to analyze complex tasks and automatically suggest smaller, manageable sub-tasks, helping you improve productivity and tackle big projects with ease.",
     iconUrl: BASE_URL + '/ai-powered-task-manager/pwa-512x512.webp',
@@ -56,9 +56,9 @@ export const APPS: AppDefinition[] = [
   },
   {
     id: "deploy-helper",
-    title: "Problem Buddy Deployment Helper",
+    title: "Deploy Helper",
     description:
-      "A demo app showcasing a secure, automated, zero-downtime deployment strategy for web applications.",
+      "CI/CD guide with zero-downtime and instant rollbacks.",
     longDescription:
       "This application is a comprehensive, interactive guide to a production-grade CI/CD pipeline. It showcases a robust architecture using GitHub Actions for automation, Nginx with a symbolic link strategy for zero-downtime deployments, and security best practices. Explore step-by-step guides for automated CI/CD, server-side scripting, or one-click Windows deployment, all designed for reliability and instant rollbacks.",
     iconUrl: BASE_URL + "/deploy-helper/pwa-512x512.png",
@@ -66,9 +66,9 @@ export const APPS: AppDefinition[] = [
   },
   {
     id: "tutorial",
-    title: "Multi-Agent Tutorial Generator",
+    title: "Tutorial Generator",
     description:
-      "Generate detailed tutorials on any topic using a collaborative multi-agent AI system.",
+      "Multi-agent AI that builds tutorials in real time.",
     longDescription:
       "This application leverages a simulated multi-agent system to automatically generate detailed tutorials. Simply provide a topic, and the AI agents will collaborate: Agent 1 creates a logical outline, Agent 4 researches current information if needed, Agent 2 writes the content for each section, and Agent 3 assembles and formats the final tutorial. Watch the process unfold in real-time through the activity log.",
     iconUrl: BASE_URL + "/tutorial/pwa-512x512.webp",
@@ -77,7 +77,7 @@ export const APPS: AppDefinition[] = [
   {
     id: "epub-tagger",
     title: "Epub Tagger",
-    description: "Automatically tag your uploaded epub novels.",
+    description: "Smart tagging for your digital book collection.",
     longDescription:
       "Organize your digital library effortlessly. Upload your epub files and let our powerful algorithm analyze the content to assign relevant and accurate tags automatically.",
     iconUrl: BASE_URL + "/epub-tagger/pwa-512x512.webp",
@@ -86,7 +86,7 @@ export const APPS: AppDefinition[] = [
   {
     id: "epub-search",
     title: "Epub Search",
-    description: "Search for keywords within your epub files.",
+    description: "Instantly locate keywords inside your EPUB books.",
     longDescription:
       "Quickly locate specific information within your epub collection. Upload a book and search for keywords or phrases to find exactly what you're looking for in seconds.",
     iconUrl: BASE_URL + "/epub-search/pwa-512x512.webp",
