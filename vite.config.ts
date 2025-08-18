@@ -28,8 +28,8 @@ export default defineConfig(({ mode }) => {
         manifest: {
           name: "Launchpad",
           short_name: "Launch",
-          start_url: "/launchpad/",
-          scope: "/launchpad/",
+          start_url: "/",
+          scope: "/",
           display: "standalone",
           background_color: "#ffffff",
           theme_color: "#ffffff",
