@@ -84,16 +84,6 @@ export const APPS: AppDefinition[] = [
     href: "/epub-tagger/",
   },
   {
-    id: "video-to-learning-app",
-    title: "Video to Learning App",
-    description:
-      "Instantly turn YouTube videos into fun learning apps using AI. Explore concepts visually and learn actively!",
-    longDescription:
-      "Transform any educational YouTube video into a hands-on learning experience. Paste a URL, and our AI will analyze the content to design and build a custom, interactive mini-app that helps you master the video's key concepts. You can play with the generated app, inspect its code, and even modify the AI's design specifications to create your own variations. It's a powerful and fun way to learn by doing.",
-    iconUrl: BASE_URL + "/video-to-learning-app/pwa-512x512.png",
-    href: "/video-to-learning-app/",
-  },
-  {
     id: "epub-search",
     title: "Epub Search",
     description: "Search for keywords within your epub files.",
