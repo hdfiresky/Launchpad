@@ -52,6 +52,9 @@ export default defineConfig(({ mode }) => {
             },
           ],
         },
+        workbox: {
+          cleanupOutdatedCaches: true,
+        },
       }),
     ],
   };
