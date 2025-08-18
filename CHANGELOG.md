@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.6](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.7.5...v0.7.6) (2025-08-18)
+
+
+### Features
+
+* icon change ([65db29c](https://github.com/hdfiresky/Problembuddy-deploy/commit/65db29c48bb5cb73d055e3da9421cb4562acbece))
+
 ### [0.7.5](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.7.4...v0.7.5) (2025-08-18)
 
 ### [0.7.4](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.7.3...v0.7.4) (2025-08-18)
