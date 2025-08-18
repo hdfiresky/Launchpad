@@ -14,7 +14,7 @@ export const APPS: AppDefinition[] = [
     description: "Find Korean, Chinese, or any other dramas.",
     longDescription:
       "Explore a vast universe of television dramas from across Asia and beyond. Get recommendations, read reviews, and find your next binge-worthy show with Dramaverse.",
-    iconUrl: BASE_URL + "/dramaverse/pwa-512x512.png",
+    iconUrl: BASE_URL + "/dramaverse/pwa-512x512.webp",
     href: "/dramaverse/",
   },
   {
@@ -23,7 +23,7 @@ export const APPS: AppDefinition[] = [
     description: "Find your next best web novel for your picking.",
     longDescription:
       "Discover your next favorite read with Novel Finder Pro. Our advanced algorithm helps you find hidden gems and popular web novels tailored to your unique taste.",
-    iconUrl: BASE_URL + "/novel-finder-pro/pwa-512x512.png",
+    iconUrl: BASE_URL + "/novel-finder-pro/pwa-512x512.webp",
     href: "/novel-finder-pro/",
   },
   {
