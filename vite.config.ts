@@ -21,10 +21,10 @@ export default defineConfig(({ mode }) => {
         injectRegister:"auto",
         includeAssets: [
           "robots.txt",
-          "favicon.v2.png",
+          "favicon.png",
           "apple-touch-icon.webp",
-          "pwa-192x192.v2.webp",
-          "pwa-512x512.v2.webp",
+          "pwa-192x192.webp",
+          "pwa-512x512.webp",
         ],
         manifest: {
           name: "Problembuddy",
@@ -36,17 +36,17 @@ export default defineConfig(({ mode }) => {
           theme_color: "#ffffff",
           icons: [
             {
-              src: "/launchpad/pwa-192x192.v2.webp?v=2025081801",
+              src: "/launchpad/pwa-192x192.webp?v=2025081802",
               sizes: "192x192",
               type: "image/webp",
             },
             {
-              src: "/launchpad/pwa-512x512.v2.webp?v=2025081801",
+              src: "/launchpad/pwa-512x512.webp?v=2025081802",
               sizes: "512x512",
               type: "image/webp",
             },
             {
-              src: "/launchpad/pwa-512x512.v2.webp?v=2025081801",
+              src: "/launchpad/pwa-512x512.webp?v=2025081802",
               sizes: "512x512",
               type: "image/webp",
               purpose: "any maskable",
