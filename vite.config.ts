@@ -5,7 +5,7 @@ import { defineConfig, loadEnv } from "vite";
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, ".", "");
   return {
-    base: "/launchpad/",
+    base: "/",
     define: {
       "process.env.API_KEY": JSON.stringify(env.GEMINI_API_KEY),
       "process.env.GEMINI_API_KEY": JSON.stringify(env.GEMINI_API_KEY),
@@ -28,8 +28,8 @@ export default defineConfig(({ mode }) => {
         manifest: {
           name: "Launchpad",
           short_name: "Launch",
-          start_url: "/launchpad/",
-          scope: "/launchpad/",
+          start_url: "/",
+          scope: "/",
           display: "standalone",
           background_color: "#ffffff",
           theme_color: "#ffffff",
