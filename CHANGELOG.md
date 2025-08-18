@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.3](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.7.0...v0.7.3) (2025-08-18)
+
+
+### Bug Fixes
+
+* launchpad pwa routing issue fix ([117c6ca](https://github.com/hdfiresky/Problembuddy-deploy/commit/117c6ca22369fb41974c3942351061070db90981))
+* version fix ([8e805d5](https://github.com/hdfiresky/Problembuddy-deploy/commit/8e805d505b71f29681377d0465aa019c7ebb364b))
+
 ### [0.7.1](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.7.0...v0.7.1) (2025-08-18)
 
 
