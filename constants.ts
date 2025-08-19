@@ -32,7 +32,7 @@ export const APPS: AppDefinition[] = [
     description: "One-click icon generation for web apps.",
     longDescription:
       "Streamline your development workflow by generating complete icon sets for Progressive Web Apps (PWAs) and browser extensions from a single image. This tool automatically removes white backgrounds, previews the result, and generates all the necessary icon sizes in a downloadable zip file.",
-    iconUrl: BASE_URL + "/asset-generator/pwa-512x512.png",
+    iconUrl: BASE_URL + "/asset-generator/pwa-512x512.webp",
     href: "/asset-generator/",
   },
   {
