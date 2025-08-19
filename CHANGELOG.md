@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.4](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.8.3...v0.8.4) (2025-08-19)
+
+
+### Bug Fixes
+
+* icon of asset generator ([cdf2af7](https://github.com/hdfiresky/Problembuddy-deploy/commit/cdf2af7653ae7f29e32c42a7b685e65cc1e30069))
+
 ### [0.8.3](https://github.com/hdfiresky/Problembuddy-deploy/compare/v0.8.2...v0.8.3) (2025-08-18)
 
 
