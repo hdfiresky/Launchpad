@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { AppDefinition } from '../types';
 import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 
@@ -15,11 +15,13 @@ interface DescriptionModalProps {
 /**
  * A modal dialog that gracefully animates into view to display detailed information about an application.
  * It provides the user with an option to proceed to the app or to close the modal.
- * The component is designed to be accessible, closing on overlay clicks.
+ * The component is designed to be accessible, closing on overlay clicks, Escape key, and trapping focus.
  */
 export const DescriptionModal: React.FC<DescriptionModalProps> = ({ isOpen, onClose, app }) => {
     // State to manage the animation, allowing for a smooth entrance.
     const [isShowing, setIsShowing] = useState(false);
+    const modalRef = useRef<HTMLDivElement>(null);
+    const closeButtonRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
         // When the modal is set to open, we delay setting `isShowing` to true.
@@ -33,10 +35,55 @@ export const DescriptionModal: React.FC<DescriptionModalProps> = ({ isOpen, onCl
         }
     }, [isOpen]);
 
+    // Handle focus trap and Escape key
+    useEffect(() => {
+        if (!isOpen) return;
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                onClose();
+            }
+
+            if (event.key === 'Tab') {
+                if (!modalRef.current) return;
+
+                const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
+                    'a[href], button:not([disabled]), textarea, input, select'
+                );
+                
+                if (focusableElements.length === 0) return;
+
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (!event.shiftKey && document.activeElement === lastElement) {
+                    event.preventDefault();
+                    firstElement.focus();
+                }
+
+                if (event.shiftKey && document.activeElement === firstElement) {
+                    event.preventDefault();
+                    lastElement.focus();
+                }
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isOpen, onClose]);
+
+    // Set initial focus on the close button when the modal appears
+    useEffect(() => {
+        if (isShowing && closeButtonRef.current) {
+            closeButtonRef.current.focus();
+        }
+    }, [isShowing]);
+
     // If the modal isn't open, render nothing.
     if (!isOpen) return null;
 
-    // Note: A more robust implementation would handle the 'Escape' key to close the modal and implement a full focus trap.
     return (
         <div 
             className={`fixed inset-0 z-50 flex justify-center items-center p-4 transition-opacity duration-300 ease-out ${isShowing ? 'bg-black bg-opacity-60' : 'bg-opacity-0'}`}
@@ -46,6 +93,7 @@ export const DescriptionModal: React.FC<DescriptionModalProps> = ({ isOpen, onCl
             aria-labelledby="modal-title"
         >
             <div 
+                ref={modalRef}
                 className={`bg-white dark:bg-slate-800 rounded-xl shadow-2xl w-full max-w-md m-4 transform transition-all duration-300 ease-out ${isShowing ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
                 // Prevents closing the modal when clicking inside the content area.
                 onClick={(e) => e.stopPropagation()}
@@ -74,6 +122,7 @@ export const DescriptionModal: React.FC<DescriptionModalProps> = ({ isOpen, onCl
                             <ExternalLinkIcon className="ml-2 -mr-1 h-5 w-5" />
                         </a>
                         <button
+                            ref={closeButtonRef}
                             onClick={onClose}
                             className="w-full sm:w-auto inline-flex justify-center px-4 py-2 border border-slate-300 dark:border-slate-600 text-sm font-medium rounded-md text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-slate-800 transition-colors"
                         >

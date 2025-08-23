@@ -9,21 +9,21 @@ This document outlines a strategic roadmap for enhancing the Problembuddy applic
 *Focus: Address critical accessibility gaps, refine core user interactions, and establish a more robust development foundation.*
 
 ### Phase 1: Accessibility (A11y) Overhaul
-- [ ] **Modal Accessibility:**
-    - [ ] Implement a focus trap to contain keyboard navigation within the open modal.
-    - [ ] Add an event listener to close the modal when the `Escape` key is pressed.
-    - [ ] Ensure screen readers announce the modal title upon opening using `aria-labelledby`.
-- [ ] **Interaction Accessibility:**
-    - [ ] Conduct a full audit of keyboard navigation and focus states to ensure all interactive elements are reachable and clearly indicated.
-    - [ ] Add ARIA attributes to provide context for dynamic content changes.
+- [x] **Modal Accessibility:**
+    - [x] Implement a focus trap to contain keyboard navigation within the open modal.
+    - [x] Add an event listener to close the modal when the `Escape` key is pressed.
+    - [x] Ensure screen readers announce the modal title upon opening using `aria-labelledby`.
+- [x] **Interaction Accessibility:**
+    - [x] Conduct a full audit of keyboard navigation and focus states to ensure all interactive elements are reachable and clearly indicated.
+    - [x] Add ARIA attributes to provide context for dynamic content changes.
 
 ### Phase 2: Core UX Refinements
-- [ ] **Improve Touch Device Interactions:**
-    - [ ] Rework the `AppCard` component to make the "info" button always visible, removing the reliance on hover which is not available on touch devices.
-- [ ] **Implement Search & Filtering:**
-    - [ ] Add a search bar to filter applications by title and description in real-time.
-    - [ ] Implement debouncing on the search input to optimize performance.
-    - [ ] Add a clear, user-friendly message when a search query yields no results.
+- [x] **Improve Touch Device Interactions:**
+    - [x] Reworked the `AppCard` component to make the "info" button always visible, removing the reliance on hover which is not available on touch devices.
+- [x] **Implement Search & Filtering:**
+    - [x] Added a search bar to filter applications by title and description in real-time.
+    - [x] Implemented debouncing on the search input to optimize performance.
+    - [x] Added a clear, user-friendly message when a search query yields no results.
 
 ### Phase 3: Developer Experience & Best Practices
 - [ ] **Transition to a Bundler-Based Setup:**

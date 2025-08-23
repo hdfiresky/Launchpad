@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import type { AppDefinition } from '../types';
 import { InfoIcon } from './icons/InfoIcon';
@@ -37,7 +38,7 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onInfoClick }) => {
             <button
                 onClick={handleInfoButtonClick}
                 aria-label={`More info about ${app.title}`}
-                className="absolute top-2 right-2 p-2 rounded-full text-slate-400 dark:text-slate-500 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm hover:bg-slate-200/70 dark:hover:bg-slate-700/70 hover:text-slate-700 dark:hover:text-slate-200 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+                className="absolute top-3 right-3 p-2 rounded-full text-slate-400 dark:text-slate-500 bg-slate-100/60 dark:bg-slate-900/60 backdrop-blur-sm hover:bg-slate-200/80 dark:hover:bg-slate-700/80 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
             >
                 <InfoIcon className="h-5 w-5" />
             </button>
