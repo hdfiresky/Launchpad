@@ -1,13 +1,19 @@
 
+
 import React from 'react';
 import type { AppDefinition } from '../types';
 import { InfoIcon } from './icons/InfoIcon';
+import { StarIcon } from './icons/StarIcon';
 
 interface AppListItemProps {
     /** The application data to display. */
     app: AppDefinition;
     /** Callback function triggered when the info icon is clicked. */
     onInfoClick: (app: AppDefinition) => void;
+    /** Whether the app is marked as a favorite. */
+    isFavorite: boolean;
+    /** Callback function to toggle the favorite state. */
+    onToggleFavorite: (appId: string) => void;
 }
 
 /**
@@ -15,12 +21,19 @@ interface AppListItemProps {
  * The entire item is a link that navigates to the app.
  * It includes an info icon to open a modal with the app's long description.
  */
-export const AppListItem: React.FC<AppListItemProps> = ({ app, onInfoClick }) => {
+export const AppListItem: React.FC<AppListItemProps> = ({ app, onInfoClick, isFavorite, onToggleFavorite }) => {
     const handleInfoButtonClick = (e: React.MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
         onInfoClick(app);
     };
+
+    const handleFavoriteButtonClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        onToggleFavorite(app.id);
+    };
+
 
     return (
         <a 
@@ -36,13 +49,22 @@ export const AppListItem: React.FC<AppListItemProps> = ({ app, onInfoClick }) =>
                     <p className="text-sm text-slate-500 dark:text-slate-400 truncate">{app.description}</p>
                 </div>
             </div>
-            <button
-                onClick={handleInfoButtonClick}
-                aria-label={`More info about ${app.title}`}
-                className="p-2 ml-4 flex-shrink-0 rounded-full text-slate-400 dark:text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
-            >
-                <InfoIcon className="h-5 w-5" />
-            </button>
+            <div className="flex items-center space-x-2 flex-shrink-0 ml-4">
+                <button
+                    onClick={handleFavoriteButtonClick}
+                    aria-label={isFavorite ? `Remove ${app.title} from favorites` : `Add ${app.title} to favorites`}
+                    className={`p-2 rounded-full transition-colors ${isFavorite ? 'text-amber-400 hover:text-amber-500' : 'text-slate-400 dark:text-slate-500 hover:text-amber-400'} hover:bg-slate-200 dark:hover:bg-slate-700`}
+                >
+                    <StarIcon filled={isFavorite} className="h-5 w-5" />
+                </button>
+                <button
+                    onClick={handleInfoButtonClick}
+                    aria-label={`More info about ${app.title}`}
+                    className="p-2 rounded-full text-slate-400 dark:text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                >
+                    <InfoIcon className="h-5 w-5" />
+                </button>
+            </div>
         </a>
     );
 };

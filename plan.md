@@ -38,10 +38,10 @@ This document outlines a strategic roadmap for enhancing the Problembuddy applic
 *Focus: Empower users to customize the dashboard to their personal workflow and organize the growing list of applications.*
 
 ### Phase 1: Favorites System
-- [ ] **Implement "Favorite" Functionality:**
-    - [ ] Add a "favorite" toggle button (e.g., a star icon) to each `AppCard` and `AppListItem`.
-    - [ ] Persist the user's list of favorite apps using the `useLocalStorage` hook.
-    - [ ] Display a dedicated "Favorites" section at the top of the application list for quick access. This section should be hidden if no apps are favorited.
+- [x] **Implement "Favorite" Functionality:**
+    - [x] Add a "favorite" toggle button (e.g., a star icon) to each `AppCard` and `AppListItem`.
+    - [x] Persist the user's list of favorite apps using the `useLocalStorage` hook.
+    - [x] Display a dedicated "Favorites" section at the top of the application list for quick access. This section should be hidden if no apps are favorited.
 
 ### Phase 2: App Categorization
 - [ ] **Introduce App Categories:**

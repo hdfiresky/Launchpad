@@ -8,17 +8,27 @@ interface AppListProps {
     apps: AppDefinition[];
     /** Callback function to handle when an app's info icon is clicked. */
     onInfoClick: (app: AppDefinition) => void;
+    /** An array of favorite application IDs. */
+    favoriteAppIds: string[];
+    /** Callback function to toggle an app's favorite status. */
+    onToggleFavorite: (appId: string) => void;
 }
 
 /**
  * Displays a collection of applications in a vertical list.
  * It maps over the `apps` prop and renders an `AppListItem` for each one.
  */
-export const AppList: React.FC<AppListProps> = ({ apps, onInfoClick }) => {
+export const AppList: React.FC<AppListProps> = ({ apps, onInfoClick, favoriteAppIds, onToggleFavorite }) => {
     return (
         <div className="space-y-4">
             {apps.map(app => (
-                <AppListItem key={app.id} app={app} onInfoClick={onInfoClick} />
+                <AppListItem 
+                    key={app.id} 
+                    app={app} 
+                    onInfoClick={onInfoClick} 
+                    isFavorite={favoriteAppIds.includes(app.id)}
+                    onToggleFavorite={onToggleFavorite}
+                />
             ))}
         </div>
     );

@@ -3,12 +3,17 @@
 import React from 'react';
 import type { AppDefinition } from '../types';
 import { InfoIcon } from './icons/InfoIcon';
+import { StarIcon } from './icons/StarIcon';
 
 interface AppCardProps {
     /** The application data to display. */
     app: AppDefinition;
     /** Callback function triggered when the info icon is clicked. */
     onInfoClick: (app: AppDefinition) => void;
+    /** Whether the app is marked as a favorite. */
+    isFavorite: boolean;
+    /** Callback function to toggle the favorite state. */
+    onToggleFavorite: (appId: string) => void;
 }
 
 /**
@@ -16,11 +21,17 @@ interface AppCardProps {
  * The entire card is a link that navigates to the app.
  * It includes an info icon to open a modal with more details.
  */
-export const AppCard: React.FC<AppCardProps> = ({ app, onInfoClick }) => {
+export const AppCard: React.FC<AppCardProps> = ({ app, onInfoClick, isFavorite, onToggleFavorite }) => {
     const handleInfoButtonClick = (e: React.MouseEvent) => {
         e.preventDefault(); // Prevent link navigation
         e.stopPropagation(); // Stop event bubbling to the parent link
         onInfoClick(app);
+    };
+
+    const handleFavoriteButtonClick = (e: React.MouseEvent) => {
+        e.preventDefault(); // Prevent link navigation
+        e.stopPropagation(); // Stop event bubbling
+        onToggleFavorite(app.id);
     };
 
     return (
@@ -35,6 +46,13 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onInfoClick }) => {
                 <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">{app.title}</h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{app.description}</p>
             </div>
+            <button
+                onClick={handleFavoriteButtonClick}
+                aria-label={isFavorite ? `Remove ${app.title} from favorites` : `Add ${app.title} to favorites`}
+                className={`absolute top-3 left-3 p-2 rounded-full transition-colors ${isFavorite ? 'text-amber-400 hover:text-amber-500' : 'text-slate-400 dark:text-slate-500 hover:text-amber-400'} bg-slate-100/60 dark:bg-slate-900/60 backdrop-blur-sm hover:bg-slate-200/80 dark:hover:bg-slate-700/80`}
+            >
+                <StarIcon filled={isFavorite} className="h-5 w-5" />
+            </button>
             <button
                 onClick={handleInfoButtonClick}
                 aria-label={`More info about ${app.title}`}
