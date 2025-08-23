@@ -25,12 +25,6 @@ This document outlines a strategic roadmap for enhancing the Problembuddy applic
     - [x] Implemented debouncing on the search input to optimize performance.
     - [x] Added a clear, user-friendly message when a search query yields no results.
 
-### Phase 3: Developer Experience & Best Practices
-- [ ] **Transition to a Bundler-Based Setup:**
-    - [ ] Introduce a build tool like Vite to manage dependencies via `package.json`.
-    - [ ] This enables performance optimizations like tree-shaking, minification, and CSS purging, and aligns with the existing `CI-CD-PIPELINE.md`.
-    - [ ] Move inline Tailwind CSS configuration to a `tailwind.config.js` file.
-
 ---
 
 ## Milestone 2: Personalization & Organization
@@ -77,3 +71,9 @@ This document outlines a strategic roadmap for enhancing the Problembuddy applic
     - [ ] Fetch the app list asynchronously on component mount, allowing for updates to the app list without requiring a full redeployment of the application.
 - [ ] **Code Splitting:**
     - [ ] As new "pages" or complex modals (like the "Add App" form) are introduced, use `React.lazy` and `Suspense` to split them into separate JavaScript chunks, reducing the initial bundle size.
+
+### Phase 4: Tooling & Build Process
+- [ ] **Transition to a Bundler-Based Setup:**
+    - [ ] Introduce a build tool like Vite to manage dependencies via `package.json`.
+    - [ ] This enables performance optimizations like tree-shaking, minification, and CSS purging, and aligns with the existing `CI-CD-PIPELINE.md`.
+    - [ ] Move inline Tailwind CSS configuration to a `tailwind.config.js` file.
